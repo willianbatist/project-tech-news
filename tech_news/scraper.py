@@ -39,7 +39,7 @@ def scrape_next_page_link(html_content):
 # Requisito 4
 def scrape_noticia(html_content):
     selector = Selector(html_content)
-    result = {
+    response = {
         "url": selector.css('link[rel="canonical"]::attr(href)').get(),
         "title": selector.css(".entry-title::text").get().strip(),
         "timestamp": selector.css(".meta-date ::text").get()[:10],
@@ -51,7 +51,7 @@ def scrape_noticia(html_content):
         "tags": selector.css("section.post-tags li a::text").getall(),
         "category": selector.css("div.entry-details span.label::text").get(),
     }
-    return result
+    return response
 
 
 # Requisito 5
