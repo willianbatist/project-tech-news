@@ -1,4 +1,3 @@
-from select import select
 from parsel import Selector
 import requests
 import time
