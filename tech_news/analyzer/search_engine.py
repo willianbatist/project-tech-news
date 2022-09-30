@@ -14,12 +14,10 @@ def search_by_title(title):
 # Requisito 7
 def search_by_date(date):
     try:
-        date1 = "%Y-%m-%d"
-        date2 = "%d/%m/%y"
-        date_one = datetime.strptime(date, date1)
-        date_two = datetime.strptime(date_one, date2)
+        date_one = datetime.strptime(date, "%Y-%m-%d")
+        date_two = datetime.strftime(date_one, "%d/%m/%Y")
         get_news = search_news(
-            {"timestamp": {"$regex": date_two, "$option": "i"}}
+            {"timestamp": {"$regex": date_two, "$options": "i"}}
         )
         result = [(row["title"], row["url"]) for row in get_news]
         return result
