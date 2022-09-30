@@ -11,6 +11,7 @@ def search_by_title(title):
     return result
 
 
+# ajuda by João Keuwe T17
 # Requisito 7
 def search_by_date(date):
     try:
@@ -27,7 +28,11 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-    """Seu código deve vir aqui"""
+    get_news = search_news({"tags": {"$regex": tag, "$options": "i"}})
+    result = []
+    for row in get_news:
+        result.append((row["title"], row["url"]))
+    return result
 
 
 # Requisito 9
